@@ -1,2 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Bpmf+Huninn&family=Luckiest+Guy&display=swap');
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
+@theme {
+	--color-primary: #f97316;
+	--color-dark: #2a1a10;
+	--color-light: #fff8f1;
+	--color-ink: #292524;
+
+	--font-logo: 'Luckiest Guy', cursive;
+	--font-sans: 'Bpmf Huninn', sans-serif;
+}

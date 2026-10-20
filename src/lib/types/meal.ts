@@ -20,6 +20,13 @@ export type MealDetail = {
 	strMeasure1: string | null;
 };
 
+export type Category ={
+	idCategory : string;
+	strCategory: string;
+    strCategoryThumb : string;
+    strCategoryDescription: string;
+};
+
 export type MealSummaryResponse = {
 	meals: MealSummary[] | null;
 };
@@ -27,3 +34,7 @@ export type MealSummaryResponse = {
 export type MealDetailResponse = {
 	meals: MealDetail[] | null;
 };
+
+export type CategoryResponse = {
+	categories: Category[] | null;
+}
