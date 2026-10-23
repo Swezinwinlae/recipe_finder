@@ -7,7 +7,7 @@
 
     <nav  class="flex gap-10 text-light font-semibold">
         <a href="/">Home</a>
-        <a href="/categories">Recipes</a>
+        <a href="/Category">Category</a>
         <a href="/favourites">Favourites</a>
     </nav>
 

@@ -15,6 +15,8 @@
     async function loadCategories() {
         try {
             categoryList = await getCategories() ;
+            console.log(categoryList.length);
+            console.log(categoryList);
         } catch (error) {
             errorMessage = "No categories";
         } finally {
@@ -33,7 +35,7 @@
          }
     }
 
-    function perviousCategory(){
+    function previousCategory(){
          index = index-1;
          if(index === -1){
             index = categoryList.length -1;
@@ -67,28 +69,34 @@
 	</div>
 </section>
 
-<section class="p-4 bg-light flex justify-between items-center">
-    <div class="ml-8">
-        <h2 class="text-center font-logo text-primary text-6xl">Categories</h2>
-        <p class="mt-2 text-center text-ink font-semibold">Pick a category to see its meals</p>
-    </div>
-    
-    <div class="relative mr-8 mx-auto  w-full max-w-4xl flex-1">
-        {#if isLoading}
-            <p>Loading...</p>
-        {:else if errorMessage}
-            <p>{errorMessage}</p>
-        {:else}
-            <CategoryCard category={categoryList[index]} />
-            <button onclick={perviousCategory} class="absolute top-1/2 -left-5 -translate-y-1/2">
-                <ChevronWithCircleLeftIcon class="w-12 h-12 text-ink hover:text-primary hover:scale-110"/> 
-            </button>
-            
-            <button onclick={nextCategory} class="absolute top-1/2 -right-5 -translate-y-1/2">
-                <ChevronWithCircleRightIcon class="w-12 h-12 text-ink hover:text-primary hover:scale-110"/>
-            </button>
-        {/if}
-    </div>
+<section class="bg-light px-6 py-12">
+	<h2 class="sr-only">Categories</h2>
+
+	<div class="mx-auto max-w-[1600px]">
+		{#if isLoading}
+			<p>Loading...</p>
+		{:else if errorMessage}
+			<p>{errorMessage}</p>
+		{:else}
+			<div class="flex items-center gap-4">
+				<button aria-label="Previous category" onclick={previousCategory} class="shrink-0">
+					<ChevronWithCircleLeftIcon
+						class="h-8 w-8 text-ink transition hover:scale-110 hover:text-primary md:h-12 md:w-12"
+					/>
+				</button>
+
+				<div class="min-w-0 flex-1">
+					<CategoryCard category={categoryList[index]} />
+				</div>
+
+				<button aria-label="Next category" onclick={nextCategory} class="shrink-0">
+					<ChevronWithCircleRightIcon
+						class="h-8 w-8 text-ink transition hover:scale-110 hover:text-primary md:h-12 md:w-12"
+					/>
+				</button>
+			</div>
+		{/if}
+	</div>
 </section>
 
 <!-- FAVOURITES -->
